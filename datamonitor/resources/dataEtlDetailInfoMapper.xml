@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="doit.com.models.mapper.DataEtlDetailInfoMapper"> 
+    <!-- insert必须和接口中的方法名一样 返回一个id -->
+    <insert id="insert" parameterType="doit.com.models.domain.DataEtlDetailInfo" useGeneratedKeys="true" keyProperty="id">
+    insert into dataetl_detail_info (
+    	checkrule_id,
+    	data_datetime,
+    	result,
+    	alarmrule,
+		alarmed)
+    values (
+    	#{checkRuleId},
+    	#{dataDateTime},
+    	#{result},
+    	#{alarmRule},
+		#{alarmed})
+    	<selectKey resultType="int" order="AFTER" keyProperty="id">
+	        SELECT LAST_INSERT_ID() as id
+	    </selectKey>
+    </insert>
+</mapper>
